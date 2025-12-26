@@ -1,2 +1,8 @@
-# C++ application Dockerfile
-# Week 2 initial setup
+FROM ubuntu:22.04
+
+RUN apt-get update && apt-get install -y \
+    g++ \
+    cmake \
+    libpqxx-dev
+
+WORKDIR /app
