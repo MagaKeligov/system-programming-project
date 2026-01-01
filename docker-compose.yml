@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:latest
+    container_name: sis-postgres
+    environment:
+      POSTGRES_DB: sis_db
+      POSTGRES_USER: sis_user
+      POSTGRES_PASSWORD: sis_password
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - sis-network
+
+volumes:
+  pgdata:
+
+networks:
+  sis-network:
+
