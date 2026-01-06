@@ -13,3 +13,14 @@ void Database::add_student() {
     txn.commit();
     std::cout << "Student added\n";
 }
+void Database::update_student(int id) {
+    pqxx::work txn(*conn);
+    txn.exec("UPDATE students SET name='Updated' WHERE id=" + txn.quote(id));
+    txn.commit();
+}
+
+void Database::delete_student(int id) {
+    pqxx::work txn(*conn);
+    txn.exec("DELETE FROM students WHERE id=" + txn.quote(id));
+    txn.commit();
+}
